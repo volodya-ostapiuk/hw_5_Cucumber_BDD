@@ -32,34 +32,34 @@ public class StepDefinition implements Constants {
     }
 
     @Given("^user is on Gmail login page$")
-    public void userIsOnGmailLoginPage() {
+    public void getGmailLoginPage() {
         DriverProvider.getInstance().get(BASE_URL);
     }
 
-    @When("^user fills email \"([^\"]*)\" and password \"([^\"]*)\"$")
-    public void userFillsEmailAndPassword(String userEmail, String userPassword) {
+    @When("^user fills email as \"([^\"]*)\" and password as \"([^\"]*)\"$")
+    public void logIn(String userEmail, String userPassword) {
         userGmail = userEmail;
         logInBO.logIn(userEmail, userPassword);
     }
 
     @Then("^user is login successfully$")
-    public void userIsLoginSuccessfully() {
+    public void verifyLogIn() {
         Assert.assertTrue(logInBO.getPageTitle().contains(userGmail.toLowerCase()), WRONG_LOGIN);
         logger.info("Successful login.");
     }
 
     @When("^user creates draft message$")
-    public void userCreatesDraftMessage() {
+    public void createDraftMessage() {
         gmailMessageBO.createDraftMessage(TEST_MESSAGE);
     }
 
     @Then("^user goes to drafts folder$")
-    public void userGoesToDraftsFolder() {
+    public void goToDraftsFolder() {
         gmailMessageBO.goToDraftsFolder();
     }
 
     @And("^user clicks on last draft message$")
-    public void userClicksOnLastDraftMessage() {
+    public void clickOnLastDraftMessage() {
         gmailMessageBO.clickOnLastDraftMessage();
     }
 
@@ -71,7 +71,7 @@ public class StepDefinition implements Constants {
     }
 
     @When("^user sends draft message$")
-    public void userSendsDraftMessage() {
+    public void sendDraftMessage() {
         gmailMessageBO.sendLastDraftMessage();
     }
 
