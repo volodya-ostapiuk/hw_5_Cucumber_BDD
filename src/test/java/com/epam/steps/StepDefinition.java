@@ -77,7 +77,7 @@ public class StepDefinition implements Constants {
 
     @Then("^verify draft message is sent successfully$")
     public void verifyDraftMessageIsSentSuccessfully() {
-        //Assert додати
+        Assert.assertTrue(gmailMessageBO.isDraftSent(), WRONG_DRAFT_SENT);
         logger.info("Message is sent successfully.");
     }
 

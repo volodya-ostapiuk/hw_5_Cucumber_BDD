@@ -46,4 +46,8 @@ public class GmailHomePage extends BasePage {
     public void clickLastDraftMessage() {
         lastDraftMessage.click();
     }
+
+    public boolean isSentMessageLinkDisplayed() {
+        return sentMessageLink.isDisplayed();
+    }
 }
