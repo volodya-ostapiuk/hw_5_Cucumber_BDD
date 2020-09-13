@@ -1,9 +1,8 @@
 Feature: Send Message
 
   Scenario Outline: Create draft message and send it from drafts folder
-    Given user is on Gmail login page
     When user fills email as "<email>" and password as "<password>"
-    Then user is login successfully
+    Then verify user is login successfully
     When user creates draft message
     Then user goes to drafts folder
     And user clicks on last draft message

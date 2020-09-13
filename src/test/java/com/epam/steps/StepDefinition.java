@@ -4,12 +4,9 @@ import com.epam.business.GmailLogInBO;
 import com.epam.business.GmailMessageBO;
 import com.epam.model.MessageEntity;
 import com.epam.utils.Constants;
-import com.epam.utils.providers.DriverProvider;
-import cucumber.api.java.After;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.Assert;
 
 public class StepDefinition implements Constants {
@@ -22,18 +19,13 @@ public class StepDefinition implements Constants {
         gmailMessageBO = new GmailMessageBO();
     }
 
-    @Given("^user is on Gmail login page$")
-    public void getGmailLoginPage() {
-        DriverProvider.getInstance().get(BASE_URL);
-    }
-
     @When("^user fills email as \"([^\"]*)\" and password as \"([^\"]*)\"$")
     public void logIn(String userEmail, String userPassword) {
         userGmail = userEmail;
         logInBO.logIn(userEmail, userPassword);
     }
 
-    @Then("^user is login successfully$")
+    @Then("^verify user is login successfully$")
     public void verifyLogIn() {
         Assert.assertTrue(logInBO.getPageTitle().contains(userGmail.toLowerCase()), WRONG_LOGIN);
     }
@@ -67,10 +59,5 @@ public class StepDefinition implements Constants {
     @Then("^verify draft message is sent successfully$")
     public void verifyDraftMessageIsSentSuccessfully() {
         Assert.assertTrue(gmailMessageBO.isDraftSent(), WRONG_DRAFT_SENT);
-    }
-
-    @After
-    public void tearDown(){
-        DriverProvider.quit();
     }
 }
