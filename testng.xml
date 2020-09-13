@@ -1,9 +1,9 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name = "GmailSuite" parallel="methods" data-provider-thread-count="3" verbose="2">
+<suite name = "GmailSuite" parallel="tests" data-provider-thread-count="3" verbose="2">
     <test name = "GmailTest">
         <classes>
-            <class name = "com.epam.GmailTest" />
+            <class name = "com.epam.runner.RunnerTest" />
         </classes>
     </test>
 </suite>
